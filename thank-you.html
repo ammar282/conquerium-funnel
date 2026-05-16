@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conquerium — Book Your Free Strategy Call</title>
+  <meta name="description" content="Book your free 1-on-1 brand strategy call. Get personalized guidance and discover how to launch or scale your D2C brand in 40 days." />
+
+  <!-- Raleway — V1 font. TODO: swap display headings to Garet once licensed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- TODO: insert FB Pixel ID -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  -->
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="funnel/step1.html" aria-label="Conquerium — Back to Home">
+          <img
+            src="Conqureium Funnel/Logo Black &amp; White/2.png"
+            alt="Conquerium — Be a Winner"
+            class="logo-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"
+          />
+          <span style="display:none;color:#D4B37D;font-weight:900;font-size:1.1rem;letter-spacing:0.12em;">CONQUERIUM</span>
+        </a>
+        <a href="funnel/step1.html" class="header-pill" style="font-size:0.7rem;">← Back</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       BOOKING HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" style="padding-bottom:0;">
+    <div class="container">
+      <div class="booking-header fade-up">
+        <span class="eyebrow">Free Strategy Call</span>
+        <h1>Book Your 1-on-1 Brand Strategy Call</h1>
+        <p>Get personalized guidance and discover how to launch (or scale) your D2C brand in 40 days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       BOOKING FORM
+  ══════════════════════════════════════════════════════════ -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div class="form-card fade-up">
+
+        <form id="booking-form" novalidate>
+
+          <!-- Full Name -->
+          <div class="form-field">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Muhammad Ali"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="form-field">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="form-field">
+            <label for="whatsapp">WhatsApp Number <span class="req">*</span></label>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              placeholder="+92 3XX XXXXXXX"
+              autocomplete="tel"
+              required
+            />
+          </div>
+
+          <!-- Track -->
+          <div class="form-field">
+            <span class="radio-group-label">Which track are you interested in?</span>
+            <div class="radio-options">
+              <div>
+                <input type="radio" id="track-launch" name="track" value="Launch" />
+                <label for="track-launch">Launch — I want to build a new brand</label>
+              </div>
+              <div>
+                <input type="radio" id="track-scale" name="track" value="Scale" />
+                <label for="track-scale">Scale — I want to grow my existing brand</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Urgency -->
+          <div class="form-field">
+            <span class="radio-group-label">How soon are you willing to start?</span>
+            <div class="radio-options">
+              <div>
+                <input type="radio" id="urgency-now" name="urgency" value="Now" />
+                <label for="urgency-now">Now</label>
+              </div>
+              <div>
+                <input type="radio" id="urgency-later" name="urgency" value="Later" />
+                <label for="urgency-later">Later</label>
+              </div>
+              <div>
+                <input type="radio" id="urgency-never" name="urgency" value="Never" />
+                <label for="urgency-never">Never</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Investment ready -->
+          <div class="form-field">
+            <span class="radio-group-label">Do you have investment ready (PKR 25,000–80,000 + product cost)?</span>
+            <div class="radio-options">
+              <div>
+                <input type="radio" id="invest-yes" name="hasInvestment" value="Yes" />
+                <label for="invest-yes">Yes</label>
+              </div>
+              <div>
+                <input type="radio" id="invest-no" name="hasInvestment" value="No" />
+                <label for="invest-no">No</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brand awareness -->
+          <div class="form-field">
+            <span class="radio-group-label">Have you seen successful Pakistani D2C brands like Elyscents, J. Junaid Jamshed, or Saeed Ghani as inspiration?</span>
+            <div class="radio-options">
+              <div>
+                <input type="radio" id="aware-yes" name="awareOfBrands" value="Yes" />
+                <label for="aware-yes">Yes</label>
+              </div>
+              <div>
+                <input type="radio" id="aware-no" name="awareOfBrands" value="No" />
+                <label for="aware-no">No</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category -->
+          <div class="form-field">
+            <span class="checkbox-group-label">Interested category (select all that apply)</span>
+            <div class="checkbox-options">
+              <div>
+                <input type="checkbox" id="cat-perfume" name="category" value="Perfume" />
+                <label for="cat-perfume">Perfume</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cat-skincare" name="category" value="Skincare" />
+                <label for="cat-skincare">Skincare</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cat-beardoil" name="category" value="Beard Oil" />
+                <label for="cat-beardoil">Beard Oil</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cat-health" name="category" value="Health &amp; Wellness" />
+                <label for="cat-health">Health &amp; Wellness</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cat-food" name="category" value="Food &amp; Beverage" />
+                <label for="cat-food">Food &amp; Beverage</label>
+              </div>
+              <div>
+                <input type="checkbox" id="cat-other" name="category" value="Other" />
+                <label for="cat-other">Other</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-field" style="margin-bottom:0;">
+            <button type="submit" class="btn-gold btn-gold--full">
+              Confirm Booking &amp; Lock My Slot
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Post-submit CTA — hidden until success -->
+        <div id="post-submit-cta">
+          <p>While you wait:</p>
+          <a href="https://www.youtube.com/watch?v=nTqJnVJilK4" target="_blank" rel="noopener noreferrer">
+            Watch a 4-minute breakdown of how we build a brand in 40 days →
+          </a>
+        </div>
+
+      </div>
+
+      <p style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--muted);">
+        <span style="color:var(--green);">✅</span> No spam. Your data is 100% secure.
+        &nbsp;·&nbsp; We'll WhatsApp you within 24 hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" style="padding-top:40px;">
+    <div class="container">
+      <div class="footer-strip">
+        <img
+          src="Conqureium Funnel/Logo Black &amp; White/2.png"
+          alt="Conquerium"
+          class="footer-logo"
+          onerror="this.style.display='none';"
+        />
+        <span style="color:var(--soft-white);">CONQUERIUM</span>
+        <span style="color:var(--muted);">·</span>
+        <span style="color:var(--gold);">Be a Winner.</span>
+        <span style="color:var(--muted);">·</span>
+        <span>© 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

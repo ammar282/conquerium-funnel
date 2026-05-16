@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --gold: #FFB020;
+  --deep-start: #1f0536;
+  --deep-end: #3b0b57;
+  --success: #16A34A;
+}
+
+html,body,#__next{
+  height:100%;
+}
+
+body{
+  @apply text-white antialiased;
+  background: radial-gradient(circle at 50% 40%, rgba(109,40,217,0.35), rgba(59,11,87,0.95) 60%);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.container-max{ max-width: 1100px; margin-left: auto; margin-right:auto; padding-left:1rem; padding-right:1rem }
+
+.card { @apply bg-purple-900/30 rounded-2xl shadow-xl p-6 }
+
+.btn-gold { background: linear-gradient(90deg, rgba(255,176,32,1) 0%, rgba(255,146,57,1) 100%); color: #1a0230 }
+
+.btn-purple { background: linear-gradient(90deg, rgba(79,41,106,0.9), rgba(43,21,73,0.9)); }
+
+.toast { @apply fixed bottom-6 right-6 bg-black/60 text-white px-4 py-2 rounded-lg shadow-lg }
