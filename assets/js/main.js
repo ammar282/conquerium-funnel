@@ -155,41 +155,70 @@ function showToast(msg) {
   form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]')
     .forEach((el) => el.addEventListener('input', () => clearError(el)));
 
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     if (!validateForm()) return;
 
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    /* Loading state */
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const categories = Array.from(form.querySelectorAll('input[name="category"]:checked')).map((c) => c.value);
+
     const payload = {
-      name:           form.querySelector('#name').value.trim(),
-      email:          form.querySelector('#email').value.trim(),
-      whatsapp:       form.querySelector('#whatsapp').value.trim(),
-      track:          form.querySelector('input[name="track"]:checked')?.value ?? '',
-      urgency:        form.querySelector('input[name="urgency"]:checked')?.value ?? '',
-      hasInvestment:  form.querySelector('input[name="hasInvestment"]:checked')?.value ?? '',
-      awareOfBrands:  form.querySelector('input[name="awareOfBrands"]:checked')?.value ?? '',
-      categories:     Array.from(form.querySelectorAll('input[name="category"]:checked')).map((c) => c.value),
-      submittedAt:    new Date().toISOString(),
+      /* Web3Forms required */
+      access_key:   '16d4985e-a36c-4cd8-98be-315cf139f3f8',
+      subject:      'New Conquerium Strategy Call Booking',
+      from_name:    'Conquerium Funnel',
+
+      /* Lead fields */
+      name:          form.querySelector('#name').value.trim(),
+      email:         form.querySelector('#email').value.trim(),
+      whatsapp:      form.querySelector('#whatsapp').value.trim(),
+      track:         form.querySelector('input[name="track"]:checked')?.value ?? '',
+      urgency:       form.querySelector('input[name="urgency"]:checked')?.value ?? '',
+      hasInvestment: form.querySelector('input[name="hasInvestment"]:checked')?.value ?? '',
+      awareOfBrands: form.querySelector('input[name="awareOfBrands"]:checked')?.value ?? '',
+      categories:    categories.join(', '),
+      submittedAt:   new Date().toISOString(),
     };
 
-    console.log('Lead payload:', payload);
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      const data = await res.json();
 
-    // TODO: connect to Supabase
-    // import { createClient } from '@supabase/supabase-js';
-    // const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    // supabase.from('leads').insert(payload).then(({ error }) => {
-    //   if (error) console.error('Supabase insert error:', error);
-    // });
+      if (data.success) {
+        showToast('Booking received. We\'ll WhatsApp you within 24 hours to schedule your Google Meet.');
+        form.reset();
 
-    // TODO: insert FB Pixel ID — fire Lead event on submit
-    // fbq('track', 'Lead', { currency: 'PKR', value: 0 });
+        const postCta = document.getElementById('post-submit-cta');
+        if (postCta) {
+          postCta.style.display = 'block';
+          postCta.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
-    showToast('Booking received. We\'ll WhatsApp you within 24 hours to schedule your Google Meet.');
-    form.reset();
+        // TODO: insert FB Pixel ID — fire Lead event on submit
+        // fbq('track', 'Lead', { currency: 'PKR', value: 0 });
 
-    const postCta = document.getElementById('post-submit-cta');
-    if (postCta) {
-      postCta.style.display = 'block';
-      postCta.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        showToast('Something went wrong. Please WhatsApp us directly to book your call.');
+        console.error('Web3Forms error:', data);
+      }
+
+    } catch (err) {
+      showToast('Could not send — check your internet and try again.');
+      console.error('Submission error:', err);
+
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
     }
   });
 })();
